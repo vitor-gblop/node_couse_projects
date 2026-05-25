@@ -1,0 +1,67 @@
+const handlebar = require("express-handlebars");
+const session = require("express-session");
+const express = require("express");
+const flash = require("express-flash");
+const fileStore = require("session-file-store")(session);
+
+const conn = require("./db/conn");
+
+const app = express();
+
+// template
+app.engine("handlebars", handlebar.engine());
+app.set("view engine", "handlebars");
+
+// json
+app.use(
+  express.urlencoded({
+    extended: true,
+  }),
+);
+app.use(express.json());
+
+// session
+app.use(
+  session({
+    name: "session",
+    secret: "express",
+    resave: false,
+    saveUninitialized: false,
+    store: new fileStore({
+      logFn: function () {},
+      path: require("path").join(require("os").tmpdir()),
+    }),
+    cookie: {
+      secure: false,
+      maxAge: 360000,
+      httpOnly: false,
+    },
+  }),
+);
+
+app.use(flash());
+
+app.use(express.static("public"));
+
+// session to res
+app.use((req, res, next) => {
+  // @ts-ignore
+  if (req.session.userId) {
+    res.locals.session = req.session;
+  }
+  next();
+});
+
+// models
+const User = require("./model/User.js");
+const Tought = require("./model/Tought.js");
+// @ts-ignore
+app.use(User);
+// @ts-ignore
+app.use(Tought);
+
+conn.sync({ force: true }).then(() => {
+  app.listen(3000, () => {
+    console.log("Rodando em http://localhost:3000");
+  });
+});
