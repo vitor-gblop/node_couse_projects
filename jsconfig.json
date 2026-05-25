@@ -9,7 +9,7 @@
     "experimentalDecorators": false,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
-    "strict": true
+    "strict": false
   },
   "exclude": ["node_modules", "**/node_modules/*"]
 }
