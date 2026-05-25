@@ -55,10 +55,15 @@ app.use((req, res, next) => {
 // models
 const User = require("./model/User.js");
 const Tought = require("./model/Tought.js");
-// @ts-ignore
-app.use(User);
-// @ts-ignore
-app.use(Tought);
+
+// routes
+const toughtRouter = require("./routes/tougthsRoute.js");
+app.use("/toughts", toughtRouter);
+
+// index
+app.get("/", (req, res) => {
+  res.send("Welcome Express App");
+});
 
 conn.sync({ force: true }).then(() => {
   app.listen(3000, () => {
