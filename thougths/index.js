@@ -58,7 +58,9 @@ const Tought = require("./model/Tought.js");
 
 // routes
 const toughtRouter = require("./routes/tougthsRoute.js");
+const authRouter = require("./routes/authRoutes.js");
 app.use("/toughts", toughtRouter);
+app.use("/", authRouter);
 
 // index
 app.get("/", (req, res) => {
