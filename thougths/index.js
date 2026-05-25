@@ -62,11 +62,11 @@ app.use("/toughts", toughtRouter);
 
 // index
 app.get("/", (req, res) => {
-  res.send("Welcome Express App");
+  res.render("home");
 });
 
 conn.sync({ force: true }).then(() => {
   app.listen(3000, () => {
-    console.log("Rodando em http://localhost:3000");
+    console.log("\n\n Rodando em http://localhost:3000");
   });
 });
