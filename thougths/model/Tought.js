@@ -9,9 +9,7 @@ const Tought = conn.define("Tougth", {
   },
 });
 
-// @ts-ignore
 Tought.belongsTo(User);
-// @ts-ignore
 User.hasMany(Tought);
 
 module.exports = Tought;
