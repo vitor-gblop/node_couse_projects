@@ -1,9 +1,9 @@
 class AuthController {
   static login(req, res) {
-    res.render("auth/");
+    res.render("auth/login");
   }
   static register(req, res) {
-    res.render("auth/");
+    res.render("auth/register");
   }
 }
 
