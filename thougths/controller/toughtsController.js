@@ -10,11 +10,10 @@ class ToughtController {
       // @ts-ignore
       search = req.query.search;
     }
-    let order = "DESC"
-    if (req.query.order)
-    {
+    let order = "DESC";
+    if (req.query.order) {
       // @ts-ignore
-      order = req.query.order
+      order = req.query.order;
     }
 
     try {
@@ -25,10 +24,14 @@ class ToughtController {
         include: User,
       });
 
-      const toughts = allToughts.map((item) => item.dataValues).reverse();
+      let toughts = allToughts.map((item) => item.dataValues);
+      if (order == "DESC") {
+        toughts = toughts.reverse();
+      }
       // console.log(allToughts.map((item) => item.dataValues));
       // console.log(allToughts.map((item) => item.dataValues.user.dataValues));
-      const qtdResults = toughts.length
+    
+      const qtdResults = toughts.length;
 
       res.render("home", { toughts, qtdResults });
     } catch (error) {
