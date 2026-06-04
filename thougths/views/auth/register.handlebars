@@ -1,6 +1,6 @@
 <div class="container">
   <h2>Create an account</h2>
-  <form action="/auth/register" method="POST" class="register-form">
+  <form action="/register" method="POST" class="register-form">
     <div class="form-group">
       <label for="name">Nome</label>
       <input
@@ -9,6 +9,7 @@
         type="text"
         required
         placeholder="Your name"
+        value="vitor"
       />
     </div>
 
@@ -20,6 +21,7 @@
         type="email"
         required
         placeholder="you@example.com"
+        value="you@example.com"
       />
     </div>
 
@@ -31,6 +33,7 @@
         type="password"
         required
         placeholder="Password"
+        value="123456"
       />
     </div>
 
@@ -42,12 +45,13 @@
         type="password"
         required
         placeholder="Confirm password"
+        value="123456"
       />
     </div>
     <br>
 
     <div class="form-actions">
-      <button type="submit">Registrar</button>
+      <button type="submit" class="btn-submit">Registrar</button>
     </div>
     <a href="/login">Ja tem conta?</a>
 

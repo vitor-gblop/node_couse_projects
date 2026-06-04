@@ -9,7 +9,9 @@ const Tought = conn.define("tougth", {
   },
 });
 
-Tought.belongsTo(User);
+Tought.belongsTo(User, {
+  foreignKey: "userId"
+});
 User.hasMany(Tought);
 
 module.exports = Tought;

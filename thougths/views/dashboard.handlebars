@@ -1,0 +1,32 @@
+<div>
+  <div class="title-container">
+    <h1>Dashboard</h1>
+  </div>
+	<br>
+	<br>
+  <div>
+    <a href="/toughts/create" class="tought">Criar pensamento</a>
+  </div>
+  <br />
+  <div>
+    <h2>Seus pensamentos</h2>
+    <div>
+      {{#if empty}}
+        <p>Sem pensamentos ainda</p>
+      {{/if}}
+
+      {{#each toughts}}
+        <div id="" class="tought" style="display: flex; justify-content: space-between;">
+        <h2>"{{this.title}}"</h2>
+          <div class="opt-container">
+            <a class="tought-opt" href="/toughts/edit/{{this.id}}">Editar</a>
+            <form action="/toughts/delete" method="post">
+              <input type="hidden" name="id" value="{{this.id}}">
+              <input class="tought-opt" type="submit" value="Excluir">
+            </form>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</div>

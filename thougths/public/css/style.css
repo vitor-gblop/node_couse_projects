@@ -1,15 +1,24 @@
 * {
   margin: 0;
+  font-family: 'Times New Roman', Times, serif;
+}
+body {
+  background: #464646;
+  color: white;
 }
 
 /* Container */
 .root {
   min-height: 80%;
+  padding: 2em;
 }
 
 /* Navigation */
+a {
+  color: white;
+}
 nav {
-  background: rgb(255, 166, 0);
+  background: #e49b13;
   color: white;
 }
 ul {
@@ -55,12 +64,30 @@ input {
   border: 1px solid gray;
 }
 
+.search-bar-container{
+  display: flex;
+  gap: 1em;
+}
+
+.search-bar-container input{
+  width: 100%;
+}
+
 /* Button */
 button {
   padding: 1em;
   border-radius: 12px;
 
   border: 1px solid gray;
+}
+.btn {
+  padding: 1em;
+  border: gray solid 1px;
+}
+.btn-submit {
+  width: 100%;
+  padding: 1em;
+  border: gray solid 1px;
 }
 
 /* Messages */
@@ -71,3 +98,27 @@ button {
 
   border: 1px solid black;
 }
+
+/* Toughts */
+.tought{
+  padding: 1em;
+  background-color: #e49b13;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+.opt-container{
+  display: flex;
+  gap: 1em;
+}
+.tought-opt {
+  background-color: transparent;
+  padding: 0.8em;
+  color: white;
+  border: 1px solid;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: small;
+  cursor: pointer;
+}
+

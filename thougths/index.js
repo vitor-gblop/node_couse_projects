@@ -28,7 +28,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: new fileStore({
-      logFn: function () {},
+      logFn: function () { },
       path: require("path").join(require("os").tmpdir()),
     }),
     cookie: {
@@ -57,17 +57,19 @@ const User = require("./model/User.js");
 const Tought = require("./model/Tought.js");
 
 // routes
+const indexRouter = require("./routes/index.js");
 const toughtRouter = require("./routes/tougthsRoute.js");
 const authRouter = require("./routes/authRoutes.js");
-app.use("/toughts", toughtRouter);
+app.use("/", indexRouter);
 app.use("/", authRouter);
+app.use("/toughts", toughtRouter);
 
 // index
 app.get("/", (req, res) => {
   res.render("home");
 });
 
-conn.sync({ force: true }).then(() => {
+conn.sync({}).then(() => {
   app.listen(3000, () => {
     console.log("\n\n Rodando em http://localhost:3000");
   });
